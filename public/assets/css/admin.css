@@ -1,0 +1,734 @@
+.admin-sidebar {
+    min-height: 100vh;
+    position: sticky;
+    top: 0;
+}
+
+.sidebar-actions {
+    margin-top: auto;
+}
+
+.admin-tab {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 16px;
+    border-radius: 14px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.82);
+    transition: 0.2s;
+}
+
+.admin-tab:hover,
+.active-tab {
+    background: rgba(255, 255, 255, 0.16);
+    color: white;
+}
+
+.stat-card {
+    background: white;
+    border: 1px solid #dbeafe;
+    border-radius: 22px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 10px 30px rgba(10, 88, 202, 0.08);
+    transition: 0.2s ease;
+    cursor: pointer;
+    min-height: 115px;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 36px rgba(10, 88, 202, 0.15);
+    border-color: #93c5fd;
+}
+
+.stat-label {
+    color: #64748b;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.stat-number {
+    font-size: 28px;
+    font-weight: 900;
+    color: #0f172a;
+    word-break: break-word;
+}
+
+.stat-hint {
+    margin-top: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #94a3b8;
+}
+
+.panel-card {
+    background: white;
+    border: 1px solid #dbeafe;
+    border-radius: 22px;
+    padding: 24px;
+    box-shadow: 0 10px 30px rgba(10, 88, 202, 0.08);
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.panel-header h3 {
+    font-size: 20px;
+    font-weight: 900;
+    color: #0f172a;
+}
+
+.admin-input {
+    border: 1px solid #cbd5e1;
+    border-radius: 14px;
+    padding: 11px 14px;
+    outline: none;
+    background: white;
+    width: 100%;
+}
+
+.admin-input:focus {
+    border-color: #0A58CA;
+    box-shadow: 0 0 0 4px rgba(10, 88, 202, 0.12);
+}
+
+.primary-btn,
+.danger-btn,
+.mini-btn {
+    border-radius: 14px;
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: 0.2s;
+    white-space: nowrap;
+}
+
+.primary-btn {
+    background: #0A58CA;
+    color: white;
+    padding: 11px 18px;
+}
+
+.danger-btn {
+    background: #dc3545;
+    color: white;
+    padding: 11px 18px;
+}
+
+.mini-btn {
+    background: #eef4fc;
+    color: #0A58CA;
+    padding: 8px 13px;
+    font-size: 13px;
+}
+
+.primary-btn:hover,
+.danger-btn:hover,
+.mini-btn:hover {
+    transform: translateY(-1px);
+    filter: brightness(0.96);
+}
+
+.admin-table-wrap {
+    overflow-x: auto;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+}
+
+.admin-table {
+    width: 100%;
+    min-width: 900px;
+    border-collapse: collapse;
+}
+
+.admin-table th {
+    background: #eef4fc;
+    color: #0A58CA;
+    text-align: left;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 13px;
+}
+
+.admin-table td {
+    padding: 13px;
+    border-top: 1px solid #e2e8f0;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.badge {
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.collapsed-block {
+    position: relative;
+    overflow: visible;
+}
+
+#dashboard-stats-wrap:not(.expanded) .stat-card:nth-child(n + 9) {
+    display: none;
+}
+
+#dashboard-stats-wrap.expanded .stat-card {
+    display: flex;
+}
+
+.see-more-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 999px;
+    background: white;
+    color: #0A58CA;
+    border: 1px solid #bfdbfe;
+    padding: 10px 20px;
+    font-weight: 900;
+    box-shadow: 0 10px 25px rgba(10, 88, 202, 0.1);
+    transition: 0.2s ease;
+}
+
+.see-more-btn:hover {
+    transform: translateY(-1px);
+    background: #eff6ff;
+}
+
+.see-more-btn i {
+    transition: transform 0.25s ease;
+}
+
+.see-more-btn.expanded i {
+    transform: rotate(180deg);
+}
+
+/* Bổ sung: bảng cuộn trong khung */
+.limited-table,
+.limited-table-large {
+    max-height: 360px;
+    overflow: auto;
+    border-radius: 16px;
+}
+
+.limited-table-large {
+    max-height: 620px;
+}
+
+.limited-table .admin-table-wrap,
+.limited-table-large .admin-table-wrap {
+    max-height: inherit;
+    overflow: auto;
+}
+
+.limited-table table thead,
+.limited-table-large table thead {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}
+
+/* Scrollbar nhẹ hơn */
+.limited-table::-webkit-scrollbar,
+.limited-table-large::-webkit-scrollbar,
+.admin-table-wrap::-webkit-scrollbar {
+    height: 9px;
+    width: 9px;
+}
+
+.limited-table::-webkit-scrollbar-thumb,
+.limited-table-large::-webkit-scrollbar-thumb,
+.admin-table-wrap::-webkit-scrollbar-thumb {
+    background: #94a3b8;
+    border-radius: 999px;
+}
+
+.limited-table::-webkit-scrollbar-track,
+.limited-table-large::-webkit-scrollbar-track,
+.admin-table-wrap::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+@media (max-width: 1024px) {
+    .stat-card {
+        min-height: 105px;
+    }
+
+    .stat-number {
+        font-size: 24px;
+    }
+
+    .collapsed-block {
+        max-height: 520px;
+    }
+
+    .limited-table,
+    .limited-table-large {
+        max-height: 520px;
+    }
+}
+/* =========================================================
+   ADMIN MOBILE RESPONSIVE OPTIMIZATION
+   Dán cuối file admin.css
+========================================================= */
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .admin-sidebar {
+        display: none !important;
+    }
+
+    main {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    main > header {
+        position: sticky;
+        top: 0;
+        z-index: 30;
+    }
+
+    main > header > div {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 0.9rem;
+    }
+
+    main > header .flex.items-center.gap-3 {
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    #page-title {
+        font-size: 1.6rem;
+    }
+
+    .admin-section {
+        width: 100%;
+    }
+
+    .panel-card {
+        padding: 1.25rem;
+        border-radius: 1.4rem;
+    }
+
+    .panel-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .panel-header h3 {
+        font-size: 1.05rem;
+    }
+
+    .mini-btn,
+    .primary-btn,
+    .danger-btn {
+        width: 100%;
+        min-height: 2.8rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    body {
+        background: #eef4fc;
+    }
+
+    main > section {
+        padding: 1rem !important;
+    }
+
+    main > header > div {
+        padding: 0.95rem 1rem !important;
+    }
+
+    main > header p {
+        font-size: 0.7rem;
+        line-height: 1.4;
+    }
+
+    #page-title {
+        font-size: 1.35rem;
+        line-height: 1.2;
+    }
+
+    #admin-name {
+        font-size: 0.9rem;
+    }
+
+    main > header .px-4.py-2.rounded-xl.bg-slate-100 {
+        padding: 0.6rem 0.85rem !important;
+        border-radius: 0.9rem !important;
+    }
+
+    /* Hiển thị tab admin dạng thanh ngang trên mobile */
+    .admin-mobile-tabs {
+        display: flex;
+    }
+
+    /* Nếu admin.html vẫn chỉ có sidebar thì tạo fallback:
+       các section vẫn dùng được khi mở trực tiếp tab bằng JS/PC.
+       Muốn có mobile tab đẹp hoàn chỉnh thì cần thêm HTML/JS nhỏ sau. */
+
+    /* Dashboard cards */
+    .collapsed-block {
+        max-height: none !important;
+        overflow: visible;
+    }
+
+    #dashboard-stats-wrap:not(.expanded) .stat-card:nth-child(n + 5) {
+        display: none;
+    }
+
+    #dashboard-stats-wrap.expanded .stat-card {
+        display: flex;
+    }
+
+    .stat-card {
+        min-height: 92px;
+        padding: 1rem;
+        border-radius: 1.25rem;
+        gap: 1rem;
+    }
+
+    .stat-card i {
+        font-size: 1.55rem !important;
+    }
+
+    .stat-label {
+        font-size: 0.78rem;
+    }
+
+    .stat-number {
+        font-size: 1.35rem;
+        line-height: 1.2;
+    }
+
+    .stat-hint {
+        font-size: 0.7rem;
+    }
+
+    .see-more-btn {
+        width: 100%;
+        min-height: 2.9rem;
+        border-radius: 1rem;
+    }
+
+    /* Filter/search rows */
+    .panel-card > .flex,
+    .panel-card .flex.flex-col,
+    .panel-card .flex.flex-col.xl\:flex-row,
+    .panel-card .flex.flex-col.lg\:flex-row {
+        gap: 1rem;
+    }
+
+    .admin-input {
+        min-height: 2.9rem;
+        border-radius: 0.95rem;
+        padding: 0.75rem 0.9rem;
+        font-size: 0.9rem;
+    }
+
+    .primary-btn,
+    .danger-btn,
+    .mini-btn {
+        min-height: 2.9rem;
+        border-radius: 0.95rem;
+        padding: 0.75rem 1rem;
+        font-size: 0.88rem;
+    }
+
+    /* Tables: vẫn cuộn ngang nhưng dễ dùng hơn */
+    .limited-table,
+    .limited-table-large {
+        max-height: 520px;
+        overflow: auto;
+        border-radius: 1rem;
+        border: 1px solid #e2e8f0;
+        background: white;
+    }
+
+    .admin-table-wrap {
+        border: 0;
+        border-radius: 1rem;
+        overflow: auto;
+    }
+
+    .admin-table {
+        min-width: 760px;
+    }
+
+    .admin-table th {
+        padding: 0.75rem;
+        font-size: 0.72rem;
+        white-space: nowrap;
+    }
+
+    .admin-table td {
+        padding: 0.75rem;
+        font-size: 0.82rem;
+        white-space: nowrap;
+    }
+
+    .badge {
+        font-size: 0.72rem;
+        padding: 0.3rem 0.55rem;
+    }
+
+    /* Select trong bảng user */
+    .admin-table .admin-input {
+        min-width: 7.5rem;
+        min-height: 2.4rem;
+        padding: 0.45rem 0.65rem;
+        font-size: 0.8rem;
+    }
+
+    /* Logs 2 cột -> 1 cột trên mobile */
+    #tab-logs .grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Filter grid trên mobile */
+    #tab-predictions .grid,
+    #tab-users .grid,
+    #tab-dashboard .grid {
+        width: 100%;
+    }
+
+    #tab-predictions .flex.gap-2 {
+        width: 100%;
+        flex-direction: column;
+    }
+}
+
+/* Small Android */
+@media (max-width: 480px) {
+    main > section {
+        padding: 0.8rem !important;
+    }
+
+    .panel-card {
+        padding: 1rem;
+        border-radius: 1.2rem;
+    }
+
+    .stat-card {
+        padding: 0.9rem;
+    }
+
+    .stat-number {
+        font-size: 1.2rem;
+    }
+
+    .stat-card i {
+        font-size: 1.35rem !important;
+    }
+
+    .admin-table {
+        min-width: 700px;
+    }
+
+    .limited-table,
+    .limited-table-large {
+        max-height: 480px;
+    }
+}
+.admin-mobile-nav {
+    position: sticky;
+    top: 76px;
+    z-index: 25;
+    display: none;
+    gap: 0.55rem;
+    overflow-x: auto;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #dbeafe;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(14px);
+}
+
+.admin-mobile-nav .admin-tab {
+    width: auto;
+    flex: 0 0 auto;
+    min-height: 2.75rem;
+    padding: 0.65rem 0.9rem;
+    border: 1px solid #dbeafe;
+    background: white;
+    color: #0A58CA;
+    border-radius: 999px;
+    font-size: 0.82rem;
+}
+
+.admin-mobile-nav .admin-tab.active-tab,
+.admin-mobile-nav .admin-tab:hover {
+    background: #0A58CA;
+    color: white;
+}
+
+@media (max-width: 1024px) {
+    .admin-mobile-nav {
+        display: flex;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-mobile-nav {
+        top: 88px;
+        padding: 0.65rem 0.8rem;
+    }
+
+    .admin-mobile-nav .admin-tab {
+        font-size: 0.78rem;
+        padding: 0.6rem 0.8rem;
+    }
+}
+@media (max-width: 768px) {
+    #tab-logs .panel-card {
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    #tab-logs .limited-table-large {
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: auto;
+        border-radius: 1rem;
+    }
+
+    #tab-logs .admin-table-wrap {
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+    #tab-logs .admin-table {
+        min-width: 680px;
+        table-layout: fixed;
+    }
+
+    #tab-logs .admin-table th,
+    #tab-logs .admin-table td {
+        max-width: 160px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    #tab-logs .admin-table th:nth-child(1),
+    #tab-logs .admin-table td:nth-child(1) {
+        width: 70px;
+    }
+
+    #tab-logs .admin-table th:nth-child(2),
+    #tab-logs .admin-table td:nth-child(2) {
+        width: 120px;
+    }
+
+    #tab-logs .admin-table th:nth-child(3),
+    #tab-logs .admin-table td:nth-child(3) {
+        width: 180px;
+    }
+
+    #tab-logs .admin-table th:nth-child(4),
+    #tab-logs .admin-table td:nth-child(4) {
+        width: 160px;
+    }
+
+    #tab-logs .admin-table th:nth-child(5),
+    #tab-logs .admin-table td:nth-child(5) {
+        width: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    #tab-logs .admin-table {
+        min-width: 620px;
+    }
+
+    #tab-logs .admin-table th,
+    #tab-logs .admin-table td {
+        max-width: 140px;
+        font-size: 0.78rem;
+    }
+}
+/* Mobile-only admin actions */
+.admin-mobile-actions {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+    .admin-mobile-actions {
+        position: sticky;
+        top: 0;
+        z-index: 28;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.65rem;
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid #dbeafe;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(14px);
+    }
+
+    .admin-mobile-action-home,
+    .admin-mobile-action-logout {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.45rem;
+        min-height: 2.75rem;
+        border-radius: 0.95rem;
+        font-size: 0.86rem;
+        font-weight: 900;
+        text-decoration: none;
+        transition: 0.2s ease;
+    }
+
+    .admin-mobile-action-home {
+        background: #eff6ff;
+        color: #0A58CA;
+        border: 1px solid #bfdbfe;
+    }
+
+    .admin-mobile-action-logout {
+        background: #fef2f2;
+        color: #dc3545;
+        border: 1px solid #fecaca;
+    }
+
+    .admin-mobile-action-home:hover,
+    .admin-mobile-action-logout:hover {
+        transform: translateY(-1px);
+        filter: brightness(0.98);
+    }
+}
+
+@media (max-width: 420px) {
+    .admin-mobile-actions {
+        grid-template-columns: 1fr;
+    }
+}

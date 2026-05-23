@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dự Đoán Chuyên Sâu | Dự đoán chi phí y tế</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        medical: {
+                            blue: '#2F80ED',
+                            navy: '#1D6ED8',
+                            cyan: '#38BDF8',
+                            mint: '#10B981',
+                            soft: '#F3F8FF',
+                            danger: '#EF4444',
+                            ink: '#0F172A'
+                        }
+                    },
+                    boxShadow: {
+                        medical: '0 18px 45px rgba(47, 128, 237, 0.12)',
+                        danger: '0 18px 45px rgba(239, 68, 68, 0.16)',
+                        soft: '0 10px 30px rgba(15, 23, 42, 0.08)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/advanced.css">
+</head>
+
+<body class="min-h-screen bg-medical-soft text-slate-800">
+
+    <div class="social-widget">
+        <a href="#" class="btn-social bg-primary" title="Facebook Messenger">
+            <i class="fa-brands fa-facebook-messenger"></i>
+        </a>
+
+        <a href="#" class="btn-social bg-info" title="Zalo">
+            <i class="fa-solid fa-comment-dots"></i>
+        </a>
+
+        <a href="tel:1900xxxx" class="btn-social bg-success" title="Gọi điện Hotline">
+            <i class="fa-solid fa-phone-flip"></i>
+        </a>
+    </div>
+
+    <nav class="navbar-custom sticky top-0 z-40">
+        <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+            <a class="navbar-brand group flex items-center gap-3" href="/">
+                <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-red-50 text-medical-danger ring-1 ring-red-100 transition group-hover:bg-medical-danger group-hover:text-white">
+                    <i class="fa-solid fa-hospital-user text-xl"></i>
+                </span>
+
+                <span class="leading-tight">
+                    <span class="block text-lg font-black text-medical-danger sm:text-xl">Dự Đoán Chi Phí Y Tế</span>
+                    <span class="hidden text-xs font-bold uppercase tracking-[0.22em] text-slate-400 sm:block">Dự Đoán Chuyên Sâu</span>
+                </span>
+            </a>
+
+            <div id="auth-nav-container" class="flex items-center gap-3"></div>
+        </div>
+    </nav>
+
+    <main class="mx-auto max-w-7xl px-4 pb-16 pt-8 sm:px-6 lg:px-8">
+        <section class="hero-section">
+            <div class="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-white/10 blur-2xl"></div>
+            <div class="absolute -bottom-24 left-1/3 h-72 w-72 rounded-full bg-red-300/20 blur-3xl"></div>
+
+            <div class="relative grid items-center gap-8 lg:grid-cols-[1.3fr_0.7fr]">
+                <div>
+                    <p class="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-red-100 ring-1 ring-white/20">
+                        <i class="fa-solid fa-microscope"></i>
+                        Mô hình phân tích chuyên sâu
+                    </p>
+
+                    <h1 class="hero-title">
+                        Dự đoán chuyên sâu<br>
+                        <span class="text-red-100">chi phí y tế</span>
+                    </h1>
+
+                    <p class="mt-5 max-w-3xl text-base leading-8 text-red-50 sm:text-lg">
+                        Đánh giá chính xác cao dựa trên 24 chỉ số bao gồm dữ liệu nhân khẩu học, sinh hiệu lâm sàng, hồ sơ bệnh lý, lối sống và tâm lý.
+                    </p>
+
+                    <div class="mt-8 flex flex-wrap gap-3">
+                        <a href="/select-method" class="inline-flex items-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-black text-medical-danger shadow-lg transition hover:-translate-y-0.5 hover:bg-red-50">
+                            <i class="fa-solid fa-layer-group"></i>
+                            Đổi mô hình
+                        </a>
+
+                        <a href="/" class="inline-flex items-center gap-2 rounded-2xl bg-white/10 px-5 py-3 text-sm font-black text-white ring-1 ring-white/25 transition hover:-translate-y-0.5 hover:bg-white/20">
+                            <i class="fa-solid fa-house-medical"></i>
+                            Về trang chủ
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hidden justify-center lg:flex">
+                    <div class="hero-icon-card">
+                        <i class="fa-solid fa-microscope text-[8rem] text-white/85"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="-mt-10 grid gap-5 px-2 sm:grid-cols-3 lg:px-6">
+            <div class="metric-card">
+                <div class="metric-icon bg-red-50 text-medical-danger">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+
+                <div>
+                    <div class="metric-number text-medical-danger">24</div>
+                    <p class="metric-label">Chỉ số đầu vào đầy đủ</p>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-icon bg-blue-50 text-medical-blue">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+
+                <div>
+                    <div class="metric-number">Lâm sàng</div>
+                    <p class="metric-label">Có sinh hiệu và bệnh nền</p>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-icon bg-emerald-50 text-medical-mint">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+
+                <div>
+                    <div class="metric-number text-medical-mint">AI+</div>
+                    <p class="metric-label">Phân tích chuyên sâu hơn</p>
+                </div>
+            </div>
+        </section>
+
+        <form id="prediction-form" class="form-shell">
+            <input type="hidden" name="model_type" value="advanced">
+
+            <div class="form-header">
+                <div>
+                    <p class="form-eyebrow">Advanced prediction form</p>
+                    <h2>Mô Hình Phân Tích Chuyên Sâu</h2>
+                    <p>Điền đầy đủ thông tin bên dưới để hệ thống dự đoán chi phí y tế với tập chỉ số chuyên sâu.</p>
+                </div>
+
+                <div class="form-header-icon">
+                    <i class="fa-solid fa-microscope"></i>
+                </div>
+            </div>
+
+            <section class="form-section">
+                <h4 class="section-title">
+                    <i class="fa-solid fa-user"></i>
+                    Dữ liệu nhân khẩu học
+                    <span>8 Chỉ số</span>
+                </h4>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span>Độ tuổi</span>
+                            <span class="text-danger fw-bold warning-icon d-none">
+                                <i class="fa-solid fa-circle-exclamation"></i> Vô lý
+                            </span>
+                        </label>
+                        <input type="number" class="form-control check-auth validate-limit" name="age" required placeholder="Ví dụ: 35">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Giới tính</label>
+                        <select class="form-select check-auth" name="gender_id" id="genderSelect" required>
+                            <option value="1">Nam</option>
+                            <option value="2">Nữ</option>
+                            <option value="3">Khác</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Dân tộc</label>
+                        <select class="form-select check-auth" name="ethnicity" required>
+                            <option value="Kinh">Kinh</option>
+                            <option value="Tày">Tày</option>
+                            <option value="Thái">Thái</option>
+                            <option value="Mường">Mường</option>
+                            <option value="Khmer">Khmer</option>
+                            <option value="Hoa">Hoa</option>
+                            <option value="Nùng">Nùng</option>
+                            <option value="H'Mông">H'Mông</option>
+                            <option value="Dao">Dao</option>
+                            <option value="Gia Rai">Gia Rai</option>
+                            <option value="Dân tộc thiểu số">Dân tộc thiểu số</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Số con</label>
+                        <input type="number" class="form-control check-auth" name="children" required value="0" min="0">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Khu vực sống</label>
+                        <select class="form-select check-auth" name="region_id" required>
+                            <option value="1">Hà Nội</option>
+                            <option value="2">TP.Hồ Chí Minh</option>
+                            <option value="3">Đà Nẵng</option>
+                            <option value="4">Hải Phòng</option>
+                            <option value="5">Cần Thơ</option>
+                            <option value="6">An Giang</option>
+                            <option value="7">Bà Rịa - Vũng Tàu</option>
+                            <option value="8">Bắc Giang</option>
+                            <option value="9">Bắc Ninh</option>
+                            <option value="10">Bến Tre</option>
+                            <option value="11">Bình Dương</option>
+                            <option value="12">Bình Định</option>
+                            <option value="13">Bình Phước</option>
+                            <option value="14">Bình Thuận</option>
+                            <option value="15">Cà Mau</option>
+                            <option value="16">Cao Bằng</option>
+                            <option value="17">Đắk Lắk</option>
+                            <option value="18">Đắk Nông</option>
+                            <option value="19">Điện Biên</option>
+                            <option value="20">Đồng Nai</option>
+                            <option value="21">Đồng Tháp</option>
+                            <option value="22">Gia Lai</option>
+                            <option value="23">Hà Giang</option>
+                            <option value="24">Hà Nam</option>
+                            <option value="25">Hà Tĩnh</option>
+                            <option value="26">Hải Dương</option>
+                            <option value="27">Hậu Giang</option>
+                            <option value="28">Hòa Bình</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Thu nhập năm</label>
+                        <select class="form-select check-auth" name="annual_income" id="incomeSelect" required>
+                            <option value="" disabled selected>-- Chọn mức --</option>
+                            <option value="1500">Dưới 50 triệu</option>
+                            <option value="3000">50 - 100 triệu</option>
+                            <option value="6000">100 - 200 triệu</option>
+                            <option value="10000">Trên 200 triệu</option>
+                        </select>
+                        <small class="mt-1 block text-xs font-bold text-medical-blue" id="usd-display"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Bảo hiểm y tế</label>
+                        <select class="form-select check-auth" name="health_insurance" required>
+                            <option value="Yes">Có</option>
+                            <option value="No">Không</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Học vấn</label>
+                        <select class="form-select check-auth" name="education_level" required>
+                            <option value="High School">Phổ thông</option>
+                            <option value="Bachelor">Đại học</option>
+                            <option value="Master">Sau đại học</option>
+                            <option value="PhD">Tiến sĩ</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <section class="form-section">
+                <h4 class="section-title danger-title">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                    Chỉ số cơ thể & Sinh hiệu Lâm sàng
+                    <span>6 Chỉ số</span>
+                </h4>
+
+                <div class="form-grid three-cols">
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span>Chiều cao</span>
+                            <span class="text-danger fw-bold warning-icon d-none">
+                                <i class="fa-solid fa-circle-exclamation"></i> Vô lý
+                            </span>
+                        </label>
+                        <input type="number" step="0.1" class="form-control check-auth validate-limit" name="height_cm" required placeholder="cm">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span>Cân nặng</span>
+                            <span class="text-danger fw-bold warning-icon d-none">
+                                <i class="fa-solid fa-circle-exclamation"></i> Vô lý
+                            </span>
+                        </label>
+                        <input type="number" step="0.1" class="form-control check-auth validate-limit" name="weight_kg" required placeholder="kg">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label text-danger">Nhóm máu (+)</label>
+                        <select class="form-select check-auth" name="blood_type" required>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label text-danger">
+                            <span>Nhịp tim (+)</span>
+                            <span class="font-bold warning-icon d-none">
+                                <i class="fa-solid fa-circle-exclamation"></i> Vô lý
+                            </span>
+                        </label>
+                        <input type="number" class="form-control check-auth validate-limit" name="heart_rate" required placeholder="bpm">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label text-danger">
+                            <span>Nhiệt độ (+)</span>
+                            <span class="font-bold warning-icon d-none">
+                                <i class="fa-solid fa-circle-exclamation"></i> Vô lý
+                            </span>
+                        </label>
+                        <input type="number" step="0.1" class="form-control check-auth validate-limit" name="avg_body_temperature" required placeholder="°C">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label text-danger">
+                            <span>Đường huyết (+)</span>
+                            <span class="font-bold warning-icon d-none">
+                                <i class="fa-solid fa-circle-exclamation"></i> Vô lý
+                            </span>
+                        </label>
+                        <input type="number" class="form-control check-auth validate-limit" name="blood_sugar_level" required placeholder="mg/dL">
+                    </div>
+                </div>
+            </section>
+
+            <datalist id="allergiesList">
+                <option value="Không">
+                <option value="Hải sản">
+                <option value="Phấn hoa">
+                <option value="Kháng sinh (Penicillin)">
+            </datalist>
+
+            <datalist id="conditionsList">
+                <option value="Không">
+                <option value="Tiểu đường">
+                <option value="Cao huyết áp">
+                <option value="Hen suyễn">
+                <option value="Bệnh tim mạch">
+            </datalist>
+
+            <datalist id="medicationsList">
+                <option value="Không">
+                <option value="Metformin">
+                <option value="Lisinopril">
+                <option value="Amlodipine">
+                <option value="Insulin">
+            </datalist>
+
+            <section class="form-section">
+                <h4 class="section-title">
+                    <i class="fa-solid fa-notes-medical"></i>
+                    Hồ sơ y tế chi tiết
+                    <span>6 Chỉ số</span>
+                </h4>
+
+                <div class="form-grid three-cols">
+                    <div class="form-group">
+                        <label class="form-label">Dị ứng</label>
+                        <select class="form-select check-auth" name="allergies" required>
+                            <option value="Unknown">Không</option>
+                            <option value="Dust">Bụi</option>
+                            <option value="Pollen">Phấn hoa</option>
+                            <option value="Seafood">Hải sản</option>
+                            <option value="Penicillin">Kháng sinh Penicillin</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label text-danger">Bệnh nền (+)</label>
+                        <select class="form-select check-auth" name="underlying_conditions" required>
+                            <option value="Unknown">Không</option>
+                            <option value="Asthma">Hen suyễn</option>
+                            <option value="Diabetes">Tiểu đường</option>
+                            <option value="Hypertension">Cao huyết áp</option>
+                            <option value="Heart Disease">Bệnh tim mạch</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Bệnh di truyền</label>
+                        <select class="form-select check-auth" name="genetic_diseases" required>
+                            <option value="Unknown">Không</option>
+                            <option value="Thalassemia">Thalassemia</option>
+                            <option value="Hemophilia">Hemophilia</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" id="reproLabel">Tiền sử sinh sản <span class="text-danger">*</span></label>
+                        <select class="form-select check-auth" name="reproductive_history" id="reproInput" disabled required>
+                            <option value="">-- Chọn (Chỉ dành cho Nữ) --</option>
+                            <option value="0">Chưa sinh con</option>
+                            <option value="1">Đã sinh 1 con</option>
+                            <option value="2">Đã sinh 2 con trở lên</option>
+                            <option value="3">Đang mang thai</option>
+                            <option value="4">Tiền mãn kinh/Mãn kinh</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Thuốc đang dùng</label>
+                        <select class="form-select check-auth" name="current_medications" required>
+                            <option value="Unknown">Không</option>
+                            <option value="Metformin">Metformin</option>
+                            <option value="Insulin">Insulin</option>
+                            <option value="Amlodipine">Amlodipine</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Tiền sử dùng thuốc</label>
+                        <select class="form-select check-auth" name="medication_history" required>
+                            <option value="Unknown">Không</option>
+                            <option value="Aspirin">Aspirin</option>
+                            <option value="Ibuprofen">Ibuprofen</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <section class="form-section">
+                <h4 class="section-title danger-title">
+                    <i class="fa-solid fa-person-running"></i>
+                    Lối sống & Tâm lý
+                    <span>4 Chỉ số</span>
+                </h4>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label text-danger">Chất kích thích</label>
+                        <select class="form-select border-danger check-auth" name="substance_use" required>
+                            <option value="Unknown">Không sử dụng</option>
+                            <option value="Alcohol">Rượu bia</option>
+                            <option value="Smoker">Thuốc lá</option>
+                            <option value="Both">Cả rượu bia và thuốc lá</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Thói quen ăn uống</label>
+                        <select class="form-select check-auth" name="dietary_habits" required>
+                            <option value="Balanced">Cân bằng / lành mạnh</option>
+                            <option value="Fast Food">Ăn nhanh / nhiều dầu mỡ</option>
+                            <option value="Vegetarian">Ăn chay</option>
+                            <option value="Keto">Keto</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Tập thể dục</label>
+                        <select class="form-select check-auth" name="exercise_frequency" required>
+                            <option value="Never">Không tập</option>
+                            <option value="1-2 times/week">1-2 lần/tuần</option>
+                            <option value="3-5 times/week">3-5 lần/tuần</option>
+                            <option value="Daily">Hằng ngày</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label text-danger">Mức độ Stress (+)</label>
+                        <input type="number" class="form-control check-auth validate-limit" name="stress_id" min="1" max="10" required placeholder="1 đến 10">
+                    </div>
+                </div>
+            </section>
+
+            <div class="mt-10 text-center">
+                <p class="mb-4 text-sm font-semibold text-slate-500">
+                    <i class="fa-solid fa-circle-info text-medical-danger"></i>
+                    Bản chuyên sâu phù hợp khi bạn có đầy đủ dữ liệu sinh hiệu, bệnh nền và thông tin lối sống.
+                </p>
+
+                <button type="submit" class="btn btn-predict" id="predictSubmitBtn">
+                    <span class="flex h-9 w-9 items-center justify-center rounded-full bg-white text-medical-danger">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </span>
+                    TIẾN HÀNH DỰ ĐOÁN CHUYÊN SÂU
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content overflow-hidden rounded-3xl">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title fw-bold" id="resultModalLabel">
+                        <i class="fa-solid fa-chart-line me-2"></i>
+                        Kết quả dự đoán chuyên sâu
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body p-4 text-center">
+                    <p class="mb-2 text-sm font-bold uppercase tracking-wider text-slate-400">Chi phí y tế dự kiến</p>
+                    <h2 class="mb-5 text-4xl font-black text-medical-mint" id="result-cost-display">$0.00</h2>
+
+                    <p class="mb-2 text-sm font-bold uppercase tracking-wider text-slate-400">Chỉ số BMI</p>
+                    <h4 class="text-2xl font-black text-medical-blue" id="result-bmi-display">N/A</h4>
+
+                    <div id="top-features-box" class="mt-5 text-left"></div>
+                </div>
+
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <a href="/" class="btn btn-primary">Về trang chủ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="mt-10 bg-slate-950 text-white">
+        <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+            <div>
+                <h5 class="mb-5 text-lg font-black uppercase tracking-wider text-blue-200">Hệ thống Dự đoán Y Tế</h5>
+                <div class="space-y-3 text-slate-300">
+                    <p><i class="fa-solid fa-building mr-2 text-blue-300"></i> <strong>Trụ sở chính:</strong> Khu Công nghệ cao, Q. Cầu Giấy, Hà Nội</p>
+                    <p><i class="fa-solid fa-envelope mr-2 text-blue-300"></i> <strong>Email:</strong> trungtamdudoan@yte.vn</p>
+                    <p><i class="fa-solid fa-phone-flip mr-2 text-blue-300"></i> <strong>Hotline 24/7:</strong> 1900 1508 (Miễn phí cước)</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="accountModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content overflow-hidden rounded-3xl">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title fw-bold">
+                        <i class="fas fa-user-cog me-2"></i>
+                        Quản lý Tài Khoản
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+
+                <form id="change-password-form">
+                    <div class="modal-body p-4">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold text-muted">Tên đăng nhập</label>
+                            <input type="text" id="modal-username-display" class="form-control bg-light" disabled>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Mật khẩu hiện tại</label>
+                            <input type="password" name="old_password" class="form-control" required placeholder="Nhập mật khẩu cũ...">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Mật khẩu mới</label>
+                            <input type="password" name="new_password" class="form-control" required placeholder="Nhập mật khẩu mới...">
+                        </div>
+                    </div>
+
+                    <div class="modal-footer bg-light">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                        <button type="submit" class="btn btn-success">Xác nhận đổi</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/api_client.js"></script>
+    <script src="/assets/js/main.js"></script>
+
+</body>
+</html>

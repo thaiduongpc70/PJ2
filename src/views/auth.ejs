@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xác Thực | AI Healthcare</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        medical: {
+                            blue: '#0A58CA',
+                            navy: '#04419A',
+                            cyan: '#0EA5E9',
+                            mint: '#10B981',
+                            soft: '#EEF4FC',
+                            danger: '#DC3545',
+                            ink: '#0F172A'
+                        }
+                    },
+                    boxShadow: {
+                        medical: '0 18px 45px rgba(10, 88, 202, 0.12)',
+                        soft: '0 10px 30px rgba(15, 23, 42, 0.08)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/auth.css">
+</head>
+
+<body class="min-h-screen bg-medical-soft text-slate-800">
+    <main class="auth-page">
+        <section class="auth-shell">
+            <div class="auth-visual">
+                <div class="auth-glow auth-glow-one"></div>
+                <div class="auth-glow auth-glow-two"></div>
+
+                <a href="/" class="brand-link">
+                    <span class="brand-icon">
+                        <i class="fa-solid fa-hospital-user"></i>
+                    </span>
+
+                    <span>
+                        <span class="brand-title">AI Healthcare</span>
+                        <span class="brand-subtitle">Medical Cost Prediction</span>
+                    </span>
+                </a>
+
+                <div class="visual-content">
+                    <p class="visual-badge">
+                        <i class="fa-solid fa-shield-heart"></i>
+                        Bảo mật hồ sơ y tế
+                    </p>
+
+                    <h1>
+                        Đăng nhập để tiếp tục<br>
+                        <span>hệ thống dự đoán y tế</span>
+                    </h1>
+
+                    <p>
+                        Lưu hồ sơ cá nhân, xem lịch sử dự đoán và sử dụng các mô hình AI y tế cơ bản hoặc chuyên sâu.
+                    </p>
+
+                    <div class="visual-stats">
+                        <div>
+                            <strong>24</strong>
+                            <span>Chỉ số AI</span>
+                        </div>
+
+                        <div>
+                            <strong>2</strong>
+                            <span>Mô hình</span>
+                        </div>
+
+                        <div>
+                            <strong>Admin</strong>
+                            <span>Dashboard</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="auth-card">
+                <div class="mobile-brand">
+                    <a href="/" class="brand-link">
+                        <span class="brand-icon">
+                            <i class="fa-solid fa-hospital-user"></i>
+                        </span>
+
+                        <span>
+                            <span class="brand-title">AI Healthcare</span>
+                            <span class="brand-subtitle">Medical Cost Prediction</span>
+                        </span>
+                    </a>
+                </div>
+
+                <div class="auth-heading">
+                    <p class="auth-eyebrow">Account Access</p>
+                    <h2 id="auth-title" class="auth-title">Đăng Nhập</h2>
+                    <p class="auth-desc">Vui lòng nhập thông tin tài khoản để truy cập hệ thống.</p>
+                </div>
+
+                <div id="auth-alert" class="alert d-none" role="alert"></div>
+
+                <form id="auth-form" data-action="login" class="auth-form">
+                    <div class="form-group">
+                        <label id="username-label" class="form-label">Tên đăng nhập</label>
+
+                        <div class="input-wrap">
+                            <span class="input-icon">
+                                <i class="fa-solid fa-user"></i>
+                            </span>
+                            <input type="text" name="username" class="form-control" required placeholder="username">
+                        </div>
+                    </div>
+
+                    <div id="email-container" class="form-group" style="display: none;">
+                        <label class="form-label">Địa chỉ Email</label>
+
+                        <div class="input-wrap">
+                            <span class="input-icon">
+                                <i class="fa-solid fa-envelope"></i>
+                            </span>
+                            <input type="email" name="email" id="email" class="form-control" placeholder="example@email.com">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Mật khẩu</label>
+
+                        <div class="input-wrap">
+                            <span class="input-icon">
+                                <i class="fa-solid fa-lock"></i>
+                            </span>
+                            <input type="password" name="password" id="password" class="form-control" required placeholder="••••••••">
+                        </div>
+                    </div>
+
+                    <div id="confirm-password-container" class="form-group" style="display: none;">
+                        <label class="form-label">Nhập lại mật khẩu</label>
+
+                        <div class="input-wrap">
+                            <span class="input-icon">
+                                <i class="fa-solid fa-key"></i>
+                            </span>
+                            <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="••••••••">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 mt-3" id="auth-btn">
+                        Đăng Nhập
+                    </button>
+
+                    <div class="toggle-row">
+                        <span id="toggle-text" class="text-muted">Chưa có tài khoản?</span>
+                        <a href="javascript:void(0)" id="toggle-link" class="toggle-link" onclick="toggleAuth()">Đăng ký ngay</a>
+                    </div>
+
+                    <div class="back-row">
+                        <a href="/" class="back-link">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            Quay lại Trang chủ
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="/assets/js/api_client.js"></script>
+
+    <script>
+        function showAuthAlert(message, type = "danger") {
+            const alertBox = document.getElementById("auth-alert");
+
+            if (!alertBox) {
+                alert(message);
+                return;
+            }
+
+            alertBox.className = `alert alert-${type}`;
+            alertBox.innerText = message;
+            alertBox.classList.remove("d-none");
+        }
+
+        function hideAuthAlert() {
+            const alertBox = document.getElementById("auth-alert");
+
+            if (!alertBox) {
+                return;
+            }
+
+            alertBox.classList.add("d-none");
+            alertBox.innerText = "";
+        }
+
+        function toggleAuth() {
+            hideAuthAlert();
+
+            const title = document.getElementById("auth-title");
+            const btn = document.getElementById("auth-btn");
+            const emailContainer = document.getElementById("email-container");
+            const confirmContainer = document.getElementById("confirm-password-container");
+            const toggleText = document.getElementById("toggle-text");
+            const toggleLink = document.getElementById("toggle-link");
+            const usernameLabel = document.getElementById("username-label");
+            const form = document.getElementById("auth-form");
+            const emailInput = document.getElementById("email");
+            const confirmInput = document.getElementById("confirm_password");
+            const desc = document.querySelector(".auth-desc");
+
+            if (emailContainer.style.display === "none") {
+                title.innerText = "Tạo Tài Khoản";
+                title.style.color = "#10B981";
+                usernameLabel.innerText = "Tên đăng nhập (Username)";
+
+                if (desc) {
+                    desc.innerText = "Tạo tài khoản để lưu hồ sơ và theo dõi lịch sử dự đoán.";
+                }
+
+                btn.innerText = "Đăng Ký";
+                btn.className = "btn btn-success w-100 mt-3";
+
+                emailContainer.style.display = "block";
+                confirmContainer.style.display = "block";
+                emailInput.required = true;
+                confirmInput.required = true;
+
+                toggleText.innerText = "Đã có tài khoản?";
+                toggleLink.innerText = "Đăng nhập";
+                toggleLink.style.color = "#10B981";
+                form.setAttribute("data-action", "register");
+            } else {
+                title.innerText = "Đăng Nhập";
+                title.style.color = "#0A58CA";
+                usernameLabel.innerText = "Tên đăng nhập";
+
+                if (desc) {
+                    desc.innerText = "Vui lòng nhập thông tin tài khoản để truy cập hệ thống.";
+                }
+
+                btn.innerText = "Đăng Nhập";
+                btn.className = "btn btn-primary w-100 mt-3";
+
+                emailContainer.style.display = "none";
+                confirmContainer.style.display = "none";
+                emailInput.required = false;
+                confirmInput.required = false;
+
+                toggleText.innerText = "Chưa có tài khoản?";
+                toggleLink.innerText = "Đăng ký ngay";
+                toggleLink.style.color = "#0A58CA";
+                form.setAttribute("data-action", "login");
+            }
+        }
+
+        function setAuthButtonLoading(isLoading) {
+            const btn = document.getElementById("auth-btn");
+            const form = document.getElementById("auth-form");
+
+            if (!btn || !form) {
+                return;
+            }
+
+            const action = form.getAttribute("data-action");
+
+            if (isLoading) {
+                btn.disabled = true;
+                btn.dataset.originalText = btn.innerText;
+                btn.innerText = action === "register" ? "Đang đăng ký..." : "Đang đăng nhập...";
+            } else {
+                btn.disabled = false;
+                btn.innerText = btn.dataset.originalText || (action === "register" ? "Đăng Ký" : "Đăng Nhập");
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+
+            if (urlParams.get("register") === "true") {
+                toggleAuth();
+            }
+
+            const authForm = document.getElementById("auth-form");
+
+            if (!authForm) {
+                return;
+            }
+
+            authForm.addEventListener("submit", async function (e) {
+                e.preventDefault();
+                hideAuthAlert();
+
+                const action = authForm.getAttribute("data-action");
+                const formData = new FormData(authForm);
+                const data = Object.fromEntries(formData.entries());
+
+                if (action === "register" && data.password !== data.confirm_password) {
+                    showAuthAlert("Mật khẩu nhập lại không khớp!", "danger");
+                    return;
+                }
+
+                if (action === "login") {
+                    delete data.email;
+                    delete data.confirm_password;
+                }
+
+                if (action === "register") {
+                    delete data.confirm_password;
+                }
+
+                setAuthButtonLoading(true);
+
+                try {
+                    const result = action === "login"
+                        ? await apiClient.login(data)
+                        : await apiClient.register(data);
+
+                    if (result.token) {
+                        saveAuth(
+                            result.token,
+                            result.user?.username || data.username,
+                            result.user?.role || "member"
+                        );
+
+                        showAuthAlert(result.message || "Thành công!", "success");
+
+                        window.location.href = "/";
+                        return;
+                    }
+
+                    showAuthAlert(result.message || "Thành công!", "success");
+
+                    if (action === "register") {
+                        window.location.href = "/auth";
+                        return;
+                    }
+
+                    window.location.href = "/";
+                } catch (error) {
+                    showAuthAlert(error.message || "Đã xảy ra lỗi. Vui lòng thử lại.", "danger");
+                } finally {
+                    setAuthButtonLoading(false);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
