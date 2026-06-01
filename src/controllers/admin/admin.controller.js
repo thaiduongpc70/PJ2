@@ -1,4 +1,4 @@
-const { pool } = require("../config/db");
+const { pool } = require("../../config/db");
 
 async function callProcedure(sql, params = []) {
     const [rows] = await pool.query(sql, params);

@@ -1,5 +1,5 @@
-const { pool } = require("../config/db");
-const predictionService = require("../services/prediction.service");
+const { pool } = require("../../config/db");
+const predictionService = require("../../services/prediction.service");
 
 function safeInt(value, defaultValue = null) {
     const number = parseInt(value, 10);

@@ -90,31 +90,31 @@ async function apiRequest(endpoint, method = 'GET', data = null) {
 
 const apiClient = {
     login: (data) =>
-        apiRequest('/login', 'POST', data),
+        apiRequest('/auth/login', 'POST', data),
 
     register: (data) =>
-        apiRequest('/register', 'POST', data),
+        apiRequest('/auth/register', 'POST', data),
 
     getMe: () =>
-        apiRequest('/me', 'GET'),
+        apiRequest('/auth/me', 'GET'),
 
     predict: (data) =>
-        apiRequest('/predict', 'POST', data),
+        apiRequest('/predict/predict', 'POST', data),
 
     getHistory: () =>
-        apiRequest('/history', 'GET'),
+        apiRequest('/predict/history', 'GET'),
 
     getPredictionDetail: (id) =>
-        apiRequest(`/history/${id}`, 'GET'),
+        apiRequest(`/predict/history/${id}`, 'GET'),
 
     saveProfile: (data) =>
-        apiRequest('/profile', 'POST', data),
+        apiRequest('/user/profile', 'POST', data),
 
     getProfile: () =>
-        apiRequest('/profile', 'GET'),
+        apiRequest('/user/profile', 'GET'),
 
     changePassword: (data) =>
-        apiRequest('/change_password', 'POST', data),
+        apiRequest('/user/change_password', 'POST', data),
 
     healthCheck: () =>
         apiRequest('/health', 'GET'),

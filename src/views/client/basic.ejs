@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dự Đoán Chuyên Sâu | Dự đoán chi phí y tế</title>
+    <title>Dự Đoán Cơ Bản | Dự đoán chi phí y tế</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -18,13 +18,12 @@
                             cyan: '#38BDF8',
                             mint: '#10B981',
                             soft: '#F3F8FF',
-                            danger: '#EF4444',
+                            danger: '#DC3545',
                             ink: '#0F172A'
                         }
                     },
                     boxShadow: {
                         medical: '0 18px 45px rgba(47, 128, 237, 0.12)',
-                        danger: '0 18px 45px rgba(239, 68, 68, 0.16)',
                         soft: '0 10px 30px rgba(15, 23, 42, 0.08)'
                     }
                 }
@@ -34,7 +33,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="/assets/css/advanced.css">
+    <link rel="stylesheet" href="/css/basic.css">
 </head>
 
 <body class="min-h-screen bg-medical-soft text-slate-800">
@@ -56,13 +55,13 @@
     <nav class="navbar-custom sticky top-0 z-40">
         <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
             <a class="navbar-brand group flex items-center gap-3" href="/">
-                <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-red-50 text-medical-danger ring-1 ring-red-100 transition group-hover:bg-medical-danger group-hover:text-white">
+                <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-medical-blue ring-1 ring-blue-100 transition group-hover:bg-medical-blue group-hover:text-white">
                     <i class="fa-solid fa-hospital-user text-xl"></i>
                 </span>
 
                 <span class="leading-tight">
-                    <span class="block text-lg font-black text-medical-danger sm:text-xl">Dự Đoán Chi Phí Y Tế</span>
-                    <span class="hidden text-xs font-bold uppercase tracking-[0.22em] text-slate-400 sm:block">Dự Đoán Chuyên Sâu</span>
+                    <span class="block text-lg font-black text-medical-blue sm:text-xl">Dự Đoán Chi Phí Y Tế</span>
+                    <span class="hidden text-xs font-bold uppercase tracking-[0.22em] text-slate-400 sm:block">Dự Đoán Cơ Bản</span>
                 </span>
             </a>
 
@@ -73,26 +72,26 @@
     <main class="mx-auto max-w-7xl px-4 pb-16 pt-8 sm:px-6 lg:px-8">
         <section class="hero-section">
             <div class="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-white/10 blur-2xl"></div>
-            <div class="absolute -bottom-24 left-1/3 h-72 w-72 rounded-full bg-red-300/20 blur-3xl"></div>
+            <div class="absolute -bottom-24 left-1/3 h-72 w-72 rounded-full bg-cyan-300/20 blur-3xl"></div>
 
             <div class="relative grid items-center gap-8 lg:grid-cols-[1.3fr_0.7fr]">
                 <div>
-                    <p class="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-red-100 ring-1 ring-white/20">
-                        <i class="fa-solid fa-microscope"></i>
-                        Mô hình phân tích chuyên sâu
+                    <p class="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-blue-100 ring-1 ring-white/20">
+                        <i class="fa-solid fa-bolt"></i>
+                        Mô hình phân tích nhanh
                     </p>
 
                     <h1 class="hero-title">
-                        Dự đoán chuyên sâu<br>
-                        <span class="text-red-100">chi phí y tế</span>
+                        Dự đoán cơ bản<br>
+                        <span class="text-blue-100">chi phí y tế</span>
                     </h1>
 
-                    <p class="mt-5 max-w-3xl text-base leading-8 text-red-50 sm:text-lg">
-                        Đánh giá chính xác cao dựa trên 24 chỉ số bao gồm dữ liệu nhân khẩu học, sinh hiệu lâm sàng, hồ sơ bệnh lý, lối sống và tâm lý.
+                    <p class="mt-5 max-w-3xl text-base leading-8 text-blue-50 sm:text-lg">
+                        Đánh giá nhanh chi phí y tế dựa trên 18 chỉ số nhân khẩu học, chỉ số cơ thể, tiền sử bệnh lý chung và lối sống.
                     </p>
 
                     <div class="mt-8 flex flex-wrap gap-3">
-                        <a href="/select-method" class="inline-flex items-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-black text-medical-danger shadow-lg transition hover:-translate-y-0.5 hover:bg-red-50">
+                        <a href="/select-method" class="inline-flex items-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-black text-medical-blue shadow-lg transition hover:-translate-y-0.5 hover:bg-blue-50">
                             <i class="fa-solid fa-layer-group"></i>
                             Đổi mô hình
                         </a>
@@ -106,7 +105,7 @@
 
                 <div class="hidden justify-center lg:flex">
                     <div class="hero-icon-card">
-                        <i class="fa-solid fa-microscope text-[8rem] text-white/85"></i>
+                        <i class="fa-solid fa-bolt text-[8rem] text-white/85"></i>
                     </div>
                 </div>
             </div>
@@ -114,58 +113,58 @@
 
         <section class="-mt-10 grid gap-5 px-2 sm:grid-cols-3 lg:px-6">
             <div class="metric-card">
-                <div class="metric-icon bg-red-50 text-medical-danger">
+                <div class="metric-icon bg-blue-50 text-medical-blue">
                     <i class="fa-solid fa-list-check"></i>
                 </div>
 
                 <div>
-                    <div class="metric-number text-medical-danger">24</div>
-                    <p class="metric-label">Chỉ số đầu vào đầy đủ</p>
+                    <div class="metric-number">18</div>
+                    <p class="metric-label">Chỉ số đầu vào cơ bản</p>
                 </div>
             </div>
 
             <div class="metric-card">
-                <div class="metric-icon bg-blue-50 text-medical-blue">
-                    <i class="fa-solid fa-heart-pulse"></i>
+                <div class="metric-icon bg-cyan-50 text-medical-cyan">
+                    <i class="fa-solid fa-bolt"></i>
                 </div>
 
                 <div>
-                    <div class="metric-number">Lâm sàng</div>
-                    <p class="metric-label">Có sinh hiệu và bệnh nền</p>
+                    <div class="metric-number">Nhanh</div>
+                    <p class="metric-label">Phù hợp dữ liệu ít chi tiết</p>
                 </div>
             </div>
 
             <div class="metric-card">
                 <div class="metric-icon bg-emerald-50 text-medical-mint">
-                    <i class="fa-solid fa-brain"></i>
+                    <i class="fa-solid fa-weight-scale"></i>
                 </div>
 
                 <div>
-                    <div class="metric-number text-medical-mint">AI+</div>
-                    <p class="metric-label">Phân tích chuyên sâu hơn</p>
+                    <div class="metric-number text-medical-mint">BMI</div>
+                    <p class="metric-label">Tự tính từ chiều cao/cân nặng</p>
                 </div>
             </div>
         </section>
 
         <form id="prediction-form" class="form-shell">
-            <input type="hidden" name="model_type" value="advanced">
+            <input type="hidden" name="model_type" value="basic">
 
             <div class="form-header">
                 <div>
-                    <p class="form-eyebrow">Advanced prediction form</p>
-                    <h2>Mô Hình Phân Tích Chuyên Sâu</h2>
-                    <p>Điền đầy đủ thông tin bên dưới để hệ thống dự đoán chi phí y tế với tập chỉ số chuyên sâu.</p>
+                    <p class="form-eyebrow">Basic prediction form</p>
+                    <h2>Mô Hình Phân Tích Cơ Bản</h2>
+                    <p>Điền đầy đủ thông tin bên dưới để hệ thống dự đoán chi phí y tế dự kiến.</p>
                 </div>
 
                 <div class="form-header-icon">
-                    <i class="fa-solid fa-microscope"></i>
+                    <i class="fa-solid fa-bolt"></i>
                 </div>
             </div>
 
             <section class="form-section">
                 <h4 class="section-title">
                     <i class="fa-solid fa-user"></i>
-                    Dữ liệu nhân khẩu học
+                    Dữ liệu nhân khẩu học & Xã hội
                     <span>8 Chỉ số</span>
                 </h4>
 
@@ -173,7 +172,7 @@
                     <div class="form-group">
                         <label class="form-label">
                             <span>Độ tuổi</span>
-                            <span class="text-danger fw-bold warning-icon d-none">
+                            <span class="text-danger fw-bold warning-icon d-none" title="Vượt quá giới hạn con người!">
                                 <i class="fa-solid fa-circle-exclamation"></i> Vô lý
                             </span>
                         </label>
@@ -249,11 +248,11 @@
                     <div class="form-group">
                         <label class="form-label">Thu nhập năm</label>
                         <select class="form-select check-auth" name="annual_income" id="incomeSelect" required>
-                            <option value="" disabled selected>-- Chọn mức --</option>
-                            <option value="1500">Dưới 50 triệu</option>
-                            <option value="3000">50 - 100 triệu</option>
-                            <option value="6000">100 - 200 triệu</option>
-                            <option value="10000">Trên 200 triệu</option>
+                            <option value="" disabled selected>-- Chọn mức thu nhập --</option>
+                            <option value="1500">Dưới 50 triệu VNĐ</option>
+                            <option value="3000">50 - 100 triệu VNĐ</option>
+                            <option value="6000">100 - 200 triệu VNĐ</option>
+                            <option value="10000">Trên 200 triệu VNĐ</option>
                         </select>
                         <small class="mt-1 block text-xs font-bold text-medical-blue" id="usd-display"></small>
                     </div>
@@ -279,13 +278,13 @@
             </section>
 
             <section class="form-section">
-                <h4 class="section-title danger-title">
-                    <i class="fa-solid fa-heart-pulse"></i>
-                    Chỉ số cơ thể & Sinh hiệu Lâm sàng
-                    <span>6 Chỉ số</span>
+                <h4 class="section-title">
+                    <i class="fa-solid fa-weight-scale"></i>
+                    Chỉ số cơ thể cơ bản
+                    <span>2 Chỉ số</span>
                 </h4>
 
-                <div class="form-grid three-cols">
+                <div class="form-grid two-cols">
                     <div class="form-group">
                         <label class="form-label">
                             <span>Chiều cao</span>
@@ -304,50 +303,6 @@
                             </span>
                         </label>
                         <input type="number" step="0.1" class="form-control check-auth validate-limit" name="weight_kg" required placeholder="kg">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label text-danger">Nhóm máu (+)</label>
-                        <select class="form-select check-auth" name="blood_type" required>
-                            <option value="A+">A+</option>
-                            <option value="A-">A-</option>
-                            <option value="B+">B+</option>
-                            <option value="B-">B-</option>
-                            <option value="AB+">AB+</option>
-                            <option value="AB-">AB-</option>
-                            <option value="O+">O+</option>
-                            <option value="O-">O-</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label text-danger">
-                            <span>Nhịp tim (+)</span>
-                            <span class="font-bold warning-icon d-none">
-                                <i class="fa-solid fa-circle-exclamation"></i> Vô lý
-                            </span>
-                        </label>
-                        <input type="number" class="form-control check-auth validate-limit" name="heart_rate" required placeholder="bpm">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label text-danger">
-                            <span>Nhiệt độ (+)</span>
-                            <span class="font-bold warning-icon d-none">
-                                <i class="fa-solid fa-circle-exclamation"></i> Vô lý
-                            </span>
-                        </label>
-                        <input type="number" step="0.1" class="form-control check-auth validate-limit" name="avg_body_temperature" required placeholder="°C">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label text-danger">
-                            <span>Đường huyết (+)</span>
-                            <span class="font-bold warning-icon d-none">
-                                <i class="fa-solid fa-circle-exclamation"></i> Vô lý
-                            </span>
-                        </label>
-                        <input type="number" class="form-control check-auth validate-limit" name="blood_sugar_level" required placeholder="mg/dL">
                     </div>
                 </div>
             </section>
@@ -378,13 +333,13 @@
             <section class="form-section">
                 <h4 class="section-title">
                     <i class="fa-solid fa-notes-medical"></i>
-                    Hồ sơ y tế chi tiết
-                    <span>6 Chỉ số</span>
+                    Tiền sử bệnh lý chung
+                    <span>5 Chỉ số</span>
                 </h4>
 
                 <div class="form-grid three-cols">
                     <div class="form-group">
-                        <label class="form-label">Dị ứng</label>
+                        <label class="form-label">Dị ứng (Chọn/Nhập)</label>
                         <select class="form-select check-auth" name="allergies" required>
                             <option value="Unknown">Không</option>
                             <option value="Dust">Bụi</option>
@@ -395,7 +350,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label text-danger">Bệnh nền (+)</label>
+                        <label class="form-label">Bệnh nền (Chọn/Nhập)</label>
                         <select class="form-select check-auth" name="underlying_conditions" required>
                             <option value="Unknown">Không</option>
                             <option value="Asthma">Hen suyễn</option>
@@ -419,10 +374,7 @@
                         <select class="form-select check-auth" name="reproductive_history" id="reproInput" disabled required>
                             <option value="">-- Chọn (Chỉ dành cho Nữ) --</option>
                             <option value="0">Chưa sinh con</option>
-                            <option value="1">Đã sinh 1 con</option>
-                            <option value="2">Đã sinh 2 con trở lên</option>
-                            <option value="3">Đang mang thai</option>
-                            <option value="4">Tiền mãn kinh/Mãn kinh</option>
+                            <option value="1">Đã sinh con</option>
                         </select>
                     </div>
 
@@ -448,13 +400,13 @@
             </section>
 
             <section class="form-section">
-                <h4 class="section-title danger-title">
+                <h4 class="section-title">
                     <i class="fa-solid fa-person-running"></i>
-                    Lối sống & Tâm lý
-                    <span>4 Chỉ số</span>
+                    Lối sống
+                    <span>3 Chỉ số</span>
                 </h4>
 
-                <div class="form-grid">
+                <div class="form-grid three-cols">
                     <div class="form-group">
                         <label class="form-label text-danger">Chất kích thích</label>
                         <select class="form-select border-danger check-auth" name="substance_use" required>
@@ -484,25 +436,20 @@
                             <option value="Daily">Hằng ngày</option>
                         </select>
                     </div>
-
-                    <div class="form-group">
-                        <label class="form-label text-danger">Mức độ Stress (+)</label>
-                        <input type="number" class="form-control check-auth validate-limit" name="stress_id" min="1" max="10" required placeholder="1 đến 10">
-                    </div>
                 </div>
             </section>
 
             <div class="mt-10 text-center">
                 <p class="mb-4 text-sm font-semibold text-slate-500">
-                    <i class="fa-solid fa-circle-info text-medical-danger"></i>
-                    Bản chuyên sâu phù hợp khi bạn có đầy đủ dữ liệu sinh hiệu, bệnh nền và thông tin lối sống.
+                    <i class="fa-solid fa-circle-info text-medical-blue"></i>
+                    Bản cơ bản phù hợp khi bạn chỉ có dữ liệu nhân khẩu học, BMI và lối sống chung.
                 </p>
 
                 <button type="submit" class="btn btn-predict" id="predictSubmitBtn">
-                    <span class="flex h-9 w-9 items-center justify-center rounded-full bg-white text-medical-danger">
-                        <i class="fa-solid fa-heart-pulse"></i>
+                    <span class="flex h-9 w-9 items-center justify-center rounded-full bg-white text-medical-blue">
+                        <i class="fa-solid fa-bolt"></i>
                     </span>
-                    TIẾN HÀNH DỰ ĐOÁN CHUYÊN SÂU
+                    TIẾN HÀNH DỰ ĐOÁN
                 </button>
             </div>
         </form>
@@ -511,10 +458,10 @@
     <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content overflow-hidden rounded-3xl">
-                <div class="modal-header bg-danger text-white">
+                <div class="modal-header bg-primary text-white">
                     <h5 class="modal-title fw-bold" id="resultModalLabel">
                         <i class="fa-solid fa-chart-line me-2"></i>
-                        Kết quả dự đoán chuyên sâu
+                        Kết quả dự đoán cơ bản
                     </h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -589,8 +536,8 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/api_client.js"></script>
-    <script src="/assets/js/main.js"></script>
+    <script src="/js/api_client.js"></script>
+    <script src="/js/main.js"></script>
 
 </body>
 </html>

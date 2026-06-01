@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-const adminController = require("../controllers/admin.controller");
-const { tokenRequired, adminRequired } = require("../middlewares/auth.middleware");
+const adminController = require('../../controllers/admin/admin.controller');
+const { tokenRequired, adminRequired } = require("../../middlewares/auth.middleware");
 
 router.use(tokenRequired);
 router.use(adminRequired);
